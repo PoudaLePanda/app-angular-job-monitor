@@ -15,7 +15,7 @@ export class DataService {
     // just returning the observable will query the backend on every subscription
     // using some caching mechanism would be wise in more complex applications
     return (<any>this.feathers // todo: remove 'any' assertion when feathers-reactive typings are up-to-date with buzzard
-      .service('joblist'))
+      .service('jobs'))
       .watch()
       .find({
         query: {
@@ -42,7 +42,7 @@ export class DataService {
     // feathers-reactive Observables are hot by default,
     // so we don't need to subscribe to make create() happen.
     this.feathers
-      .service('joblist')
+      .service('jobs')
       .create({
         text: job
       });

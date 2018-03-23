@@ -1,16 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss']
+  styleUrls: ['./jobs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JobsComponent implements OnInit {
+  jobs$: Observable<any[]>;
   jobsFUTUR: any [];
   jobsTODAY: any [];
   jobsDONE: any [];
 
-  constructor() { }
+  constructor(private data: DataService) {
+    // get messages from data service
+    this.jobs$ = data.jobs$()
+      // our data is paginated, so map to .data
+      .map(m => m.data)
+      // reverse the messages array, to have the most recent message at the end
+      // necessary because we get a descendingly sorted array from the data service
+      .map(m => m.reverse());
+  }
 
   ngOnInit() {
     this.jobsFUTUR = [

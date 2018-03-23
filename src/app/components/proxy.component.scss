@@ -203,3 +203,36 @@ input:focus {
         animation: rollin 1.15s .175s ease-out forwards;
     }
 }
+
+.messages {
+    position: relative;
+    perspective: 400;
+    padding-left: 17px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #ECF0F1;
+    margin: 0 auto;
+    width: 400px;
+    margin-top: 50px;
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 6px;
+        background: lighten(#E74C3C, 7%);
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transform: translateX(-150px);
+        animation: titleborderslidein 1.35s ease-out forwards;
+    }
+    .messages-word {
+        opacity: 0;
+        transform-origin: bottom center;
+        transform: rotateX(-90deg);
+        animation: rollin 1.15s .175s ease-out forwards;
+    }
+}

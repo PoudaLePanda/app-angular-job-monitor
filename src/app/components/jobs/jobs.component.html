@@ -1,7 +1,13 @@
 <div class="jobs">
     <section class="main">
         <ul class="timeline">
-            <div class="FUTUR">
+
+
+            <div class="TODAY">
+                <app-job *ngFor="let job of jobs$ | async" [item]="job"></app-job>
+            </div>
+
+            <!-- <div class="FUTUR">
                 <app-job *ngFor="let job of jobsFUTUR" [item]="job"></app-job>
             </div>
             <div class="TODAY">
@@ -9,7 +15,7 @@
             </div>
             <div class="DONE">
                 <app-job *ngFor="let job of jobsDONE" [item]="job"></app-job>
-            </div>
+            </div> -->
         </ul>
     </section>
     <div class="cache1"></div>

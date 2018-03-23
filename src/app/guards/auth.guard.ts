@@ -6,7 +6,11 @@ import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private authService: AuthService) { }
+
+  constructor(
+    private router: Router,
+    private auth: AuthService
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -14,14 +18,12 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
 
     /* Try to auth with the server. If authed resolve to true, else resolve to false */
-    // return this.auth
-    //   .logIn()
-    //   .then(() => true)
-    //   .catch(() => {
-    //     this.router.navigate(['/login']);
-    //     return false;
-    //   });
-    // this.router.navigate(['/']);
-    return true;
+    return this.auth
+      .logIn()
+      .then(() => true)
+      .catch(() => {
+        this.router.navigate(['/']);
+        return false;
+      });
   }
 }

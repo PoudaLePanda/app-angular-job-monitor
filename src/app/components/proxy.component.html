@@ -10,12 +10,16 @@
                 </div>
 
                 <div class="input-username">
-                    <input formControlName="username" type="text" placeholder="username" required>
+                    <input formControlName="email" type="text" placeholder="email" required>
                 </div>
             </div>
             <div class="panel-bottom" [@panelbottom]="getState(o)">
                 <div class="input-password">
                     <input formControlName="password" type="password" placeholder="password" required>
+                </div>
+
+                <div class="messages">
+                    <div class="messages-word" *ngFor="let m of messages">{{m}}</div>
                 </div>
             </div>
             <div class="panel-center" [@panelcenter]="getState(o)">
