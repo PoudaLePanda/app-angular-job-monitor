@@ -1,0 +1,15 @@
+<div class="main">
+    <span class="main-spacer"></span>
+    <app-users></app-users>
+    <div class="menu-section">
+        <nav class="menu-nav" [class.active]="toggle">
+            <ul class="list-nav" [class.active]="toggle">
+                <li><button type="button">menu</button></li>
+                <li><button type="button">menu</button></li>
+                <li><button type="button">menu</button></li>
+                <li><button type="button" class="logOut-button" (click)="logOut()">logout</button></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="toggle-button" (click)="toggle = !toggle" [class.active]="toggle">toggle</div>
+</div>

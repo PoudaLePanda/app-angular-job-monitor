@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="login($event)" class="login-container">
+    <div class="panel-background">
+        <div class="panel-top">
+            <div class="input-username">
+                <input formControlName="username" type="text" placeholder="username" required>
+            </div>
+        </div>
+        <div class="panel-bottom">
+            <div class="input-password">
+                <input formControlName="password" type="password" placeholder="password" required>
+            </div>
+        </div>
+        <div class="panel-center">
+            <div class="input-submit">
+                <input type="submit" value="Login">
+            </div>
+        </div>
+    </div>
+</form>
+<!-- <p>login</p> -->

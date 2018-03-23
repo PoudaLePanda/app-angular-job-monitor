@@ -1,0 +1,82 @@
+.jobs {
+    min-height: 2000px;
+    direction: ltr;
+    padding: 60px;
+}
+
+.timeline {
+    position: relative;
+    list-style-type: none;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    top: 0;
+    left: 165px;
+    background: #2C3E50;
+}
+
+.cache1 {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient( white, transparent);
+    height: 50px;
+}
+
+.cache2 {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(transparent, white);
+    height: 50px;
+}
+
+.FUTUR {
+    position: relative;
+    background-color: transparent;
+}
+
+.FUTUR:before {
+    content: 'FUTUR';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 15px;
+}
+
+.TODAY {
+    position: relative;
+    border: 1px solid #c0ecab;
+}
+
+.TODAY:before {
+    content: 'TODAY';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 15px;
+}
+
+.DONE {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+}
+
+.DONE:before {
+    content: 'DONE';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 15px;
+}

@@ -1,0 +1,167 @@
+// .job-container {
+//     position: relative;
+//     height: 40px;
+//     width: 90%;
+//     margin: 30px;
+// }
+// %pseudo {
+//     position: absolute;
+//     content: '';
+//     transition: all .5s;
+//     -webkit-transition: all .5s;
+// }
+// .job {
+//     position: relative;
+//     height: 100%;
+//     width: 100%;
+//     display: inline-block;
+//     color: white;
+//     background-color: #E74C3C;
+//     transition: all .5s;
+//     -webkit-transition: all .5s;
+// }
+// .job::before {
+//     @extend %pseudo;
+//     bottom: -5px;
+//     height: 5px;
+//     width: 100%;
+//     left: 3px;
+//     transform: skewX(45deg);
+//     -webkit-transform: skewX(45deg);
+//     background-color: black;
+// }
+// .job::after {
+//     @extend %pseudo;
+//     right: -5px;
+//     height: 100%;
+//     width: 5px;
+//     bottom: -3px;
+//     transform: skewY(45deg);
+//     -webkit-transform: skewY(45deg);
+//     background-color: black;
+// }
+// .toto {
+//     background-color: #E74C3C;
+//     color: #2C3E50;
+//     padding: 20px 80px 60px 80px;
+// }
+.event {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.content-perspective {
+    position: relative;
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    -o-perspective: 600px;
+    -ms-perspective: 600px;
+    perspective: 600px;
+}
+
+// .content-perspective:before {
+//     content: '';
+//     width: 37px;
+//     left: -51px;
+//     top: 20px;
+//     position: absolute;
+//     height: 1px;
+//     z-index: -1;
+//     background: #2C3E50;
+// }
+.content {
+    -webkit-transform: rotateY(10deg);
+    -moz-transform: rotateY(10deg);
+    -o-transform: rotateY(10deg);
+    -ms-transform: rotateY(10deg);
+    transform: rotateY(10deg);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.content-inner {
+    position: relative;
+    padding: 20px;
+    color: #333;
+    border: none;
+    border-left: 5px solid #2C3E50;
+    border-right: 1px solid #2C3E50;
+    border-bottom: 1px solid #2C3E50;
+    border-top: 1px solid #2C3E50;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    overflow: hidden;
+    text-align: left;
+    color: #2C3E50;
+}
+
+.content-inner.done {
+    background: rgba(0, 0, 0, 0.22);
+}
+
+// .content-inner:before {
+//     font-family: 'fontawesome-selected';
+//     content: '\25c2';
+//     font-weight: normal;
+//     font-size: 54px;
+//     line-height: 54px;
+//     position: absolute;
+//     width: 30px;
+//     height: 30px;
+//     color: #2C3E50;
+//     left: -22px;
+//     top: 19px;
+//     z-index: -1;
+// }
+
+/* Transitions */
+
+.content-inner {
+    -webkit-transition: box-shadow 0.5s linear 0.2s;
+    -moz-transition: box-shadow 0.5s linear 0.2s;
+    -o-transition: box-shadow 0.5s linear 0.2s;
+    -ms-transition: box-shadow 0.5s linear 0.2s;
+    transition: box-shadow 0.5s linear 0.2s;
+}
+
+.content {
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(.59, 1.45, .69, .98) 0.2s;
+    -moz-transition: -moz-transform 0.5s cubic-bezier(.59, 1.45, .69, .98) 0.2s;
+    -o-transition: -o-transform 0.5s cubic-bezier(.59, 1.45, .69, .98) 0.2s;
+    -ms-transition: -ms-transform 0.5s cubic-bezier(.59, 1.45, .69, .98) 0.2s;
+    transition: transform 0.5s cubic-bezier(.59, 1.45, .69, .98) 0.2s;
+}
+
+.content-inner .text {
+    -webkit-transition: max-height 0.5s linear, color 0.3s linear;
+    -moz-transition: max-height 0.5s linear, color 0.3s linear;
+    -o-transition: max-height 0.5s linear, color 0.3s linear;
+    -ms-transition: max-height 0.5s linear, color 0.3s linear;
+    transition: max-height 0.5s linear, color 0.3s linear;
+}
+
+.content-inner:hover {
+    // color: #E74C3C;
+    border-color: #E74C3C;
+    box-shadow: 10px 0px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.content-perspective:hover .content {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.content-perspective:hover~.content-perspective .content-inner:before {
+    color: #E74C3C;
+}

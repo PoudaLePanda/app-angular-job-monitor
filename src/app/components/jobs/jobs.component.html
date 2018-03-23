@@ -1,0 +1,17 @@
+<div class="jobs">
+    <section class="main">
+        <ul class="timeline">
+            <div class="FUTUR">
+                <app-job *ngFor="let job of jobsFUTUR" [item]="job"></app-job>
+            </div>
+            <div class="TODAY">
+                <app-job *ngFor="let job of jobsTODAY" [item]="job"></app-job>
+            </div>
+            <div class="DONE">
+                <app-job *ngFor="let job of jobsDONE" [item]="job"></app-job>
+            </div>
+        </ul>
+    </section>
+    <div class="cache1"></div>
+    <div class="cache2"></div>
+</div>

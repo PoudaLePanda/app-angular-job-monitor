@@ -1,0 +1,28 @@
+<div class="background">
+    <div class="panel-background" [ngStyle]="getRotation(o)">
+        <router-outlet #o="outlet"></router-outlet>
+        <form [formGroup]="loginForm" (ngSubmit)="login($event)">
+            <div class="panel-top" [@paneltop]="getState(o)">
+                <div class="title">
+                    <div class="title-word">Job Monitor</div>
+                    <div class="title-word">Feuille@Feuille</div>
+                    <div class="title-word">L.M.</div>
+                </div>
+
+                <div class="input-username">
+                    <input formControlName="username" type="text" placeholder="username" required>
+                </div>
+            </div>
+            <div class="panel-bottom" [@panelbottom]="getState(o)">
+                <div class="input-password">
+                    <input formControlName="password" type="password" placeholder="password" required>
+                </div>
+            </div>
+            <div class="panel-center" [@panelcenter]="getState(o)">
+                <div class="input-submit">
+                    <input type="submit" value="Login">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

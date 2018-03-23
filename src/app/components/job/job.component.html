@@ -1,0 +1,14 @@
+<!-- <div class="job-container">
+    <div class="job">
+        {{job.name}} works!
+    </div>
+</div> -->
+<li class="event">
+    <div class="content-perspective">
+        <div class="content">
+            <div class="content-inner" [style.width.%]="job.percent" [class.done]="job.status == 'DONE'">
+                <div class="txt">{{job.name}} {{job.status}}</div>
+            </div>
+        </div>
+    </div>
+</li>
