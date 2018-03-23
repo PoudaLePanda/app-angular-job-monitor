@@ -10,82 +10,48 @@ import { DataService } from '../../services/data.service';
 })
 export class JobsComponent implements OnInit {
   jobs$: Observable<any[]>;
-  jobsFUTUR: any [];
-  jobsTODAY: any [];
-  jobsDONE: any [];
+  jobsFUTUR: any[];
+  jobsTODAY: any[];
+  jobsDONE: any[];
+  jobsFUTUR$: Observable<any[]>;
+  jobsTODAY$: Observable<any[]>;
+  jobsDONE$: Observable<any[]>;
+  today = new Date();
 
-  constructor(private data: DataService) {
+  constructor(private dataService: DataService) {
     // get messages from data service
-    this.jobs$ = data.jobs$()
-      // our data is paginated, so map to .data
-      .map(m => m.data)
-      // reverse the messages array, to have the most recent message at the end
-      // necessary because we get a descendingly sorted array from the data service
-      .map(m => m.reverse());
+    // this.jobs$ = dataService.jobs$()
+    //   // our data is paginated, so map to .data
+    //   .map(m => m.data)
+    //   // reverse the messages array, to have the most recent message at the end
+    //   // necessary because we get a descendingly sorted array from the data service
+    //   .map(m => m.reverse());
+
+
+    // this.jobsFUTUR$ = dataService.jobs$()
+    //   .map(m => m.data)
+    //   .map(m => m.reverse());
+    this.jobsFUTUR$ = dataService.jobs$()
+    .map(jobs => {
+      jobs.filter(job => {
+        return new Date(job.dateCommande).getTime() >= this.today.getTime() &&
+          new Date(job.dateCommande).getTime() <= this.today.getTime();
+      });
+    })
+    .map(m => m.data);
   }
 
   ngOnInit() {
-    this.jobsFUTUR = [
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '10'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '20'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '20'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '50'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '30'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '30'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '40'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '60'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '55'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '60'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '60'},
-      {'name': 'job', 'status': 'PRODUCTION', 'percent': '70'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '60'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '60'},
-      {'name': 'job', 'status': 'PRODUCTION', 'percent': '65'},
-      {'name': 'job', 'status': 'STUDIO', 'percent': '60'},
-    ]
-      this.jobsTODAY = [
-      {'name': 'job', 'status': 'PRODUCTION', 'percent': '75'},
-      {'name': 'job', 'status': 'PRODUCTION', 'percent': '80'},
-      {'name': 'job', 'status': 'PRODUCTION', 'percent': '80'},
-      {'name': 'job', 'status': 'PRODUCTION', 'percent': '80'},
-    ]
-      this.jobsDONE = [
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-      {'name': 'job', 'status': 'DONE', 'percent': '100'},
-    ]
+    // this.jobsFUTUR = this.jobs$.filter((item: any) => {
+    //   return item.date.getTime() >= fromDate.getTime() &&
+    //     item.date.getTime() <= toDate.getTime();
+    // });
+    // this.jobsFUTUR = this.jobs$.filter(
+    //   book => book.store_id === this.store.id);
+    // this.jobsTODAY = this.jobs$.filter(
+    //   book => book.store_id === this.store.id);
+    // this.jobsDONE = this.jobs$.filter(
+    //   book => book.store_id === this.store.id);
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="users">
-    <div class="user"></div>
-    <div class="user"></div>
+<div class="users" *ngIf="users$ | async as users">
+    <span class="font-600 online-count">{{users.length}}</span> users
+    <div class="user" *ngFor="let user of users">{{ user.email }}</div>
 </div>

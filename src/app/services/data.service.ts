@@ -34,17 +34,14 @@ export class DataService {
       .find();
   }
 
-  sendJob(job: string) {
-    if (job === '') {
+  sendJob(job: any) {
+    if (!job) {
       return;
     }
-
     // feathers-reactive Observables are hot by default,
     // so we don't need to subscribe to make create() happen.
     this.feathers
       .service('jobs')
-      .create({
-        text: job
-      });
+      .create(job);
   }
 }

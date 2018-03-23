@@ -57,6 +57,12 @@
     bottom: 0;
     height: 50px;
     // background: rgba(0, 0, 0, 0.2);
+    .footer-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
 }
 
 .content {
@@ -85,4 +91,16 @@
     right: 0px;
     background: rgba(255, 255, 255, 0.4);
     overflow-y: scroll;
+}
+
+.test-button {
+    margin: 0 auto;
+    border: 1px solid black;
+    background: red;
+    color: white;
+    padding: 5px 20px;
+    cursor: pointer;
+    &:hover {
+        background: rgb(255, 72, 0);
+    }
 }

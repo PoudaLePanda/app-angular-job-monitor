@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MomentModule} from 'angular2-moment/moment.module';
 
 import { AppComponent } from './app.component';
 import { Feathers } from './services/feathers.service';
@@ -35,6 +36,7 @@ import { AuthGuard } from './guards/auth.guard';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    MomentModule,
     AppRoutingModule
   ],
   providers: [

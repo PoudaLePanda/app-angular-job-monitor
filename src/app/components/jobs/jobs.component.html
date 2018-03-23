@@ -1,21 +1,15 @@
 <div class="jobs">
     <section class="main">
         <ul class="timeline">
-
-
-            <div class="TODAY">
-                <app-job *ngFor="let job of jobs$ | async" [item]="job"></app-job>
-            </div>
-
-            <!-- <div class="FUTUR">
-                <app-job *ngFor="let job of jobsFUTUR" [item]="job"></app-job>
+            <div class="FUTUR">
+                <app-job *ngFor="let job of jobsFUTUR$ | async" [item]="job"></app-job>
             </div>
             <div class="TODAY">
-                <app-job *ngFor="let job of jobsTODAY" [item]="job"></app-job>
+                <app-job *ngFor="let job of jobsTODAY$ | async" [item]="job"></app-job>
             </div>
             <div class="DONE">
-                <app-job *ngFor="let job of jobsDONE" [item]="job"></app-job>
-            </div> -->
+                <app-job *ngFor="let job of jobsDONE$ | async" [item]="job"></app-job>
+            </div>
         </ul>
     </section>
     <div class="cache1"></div>
