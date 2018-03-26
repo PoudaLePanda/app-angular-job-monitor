@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DataService } from '../../services/data.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-jobs',
@@ -16,42 +17,30 @@ export class JobsComponent implements OnInit {
   jobsFUTUR$: Observable<any[]>;
   jobsTODAY$: Observable<any[]>;
   jobsDONE$: Observable<any[]>;
-  today = new Date();
 
   constructor(private dataService: DataService) {
-    // get messages from data service
-    // this.jobs$ = dataService.jobs$()
-    //   // our data is paginated, so map to .data
-    //   .map(m => m.data)
-    //   // reverse the messages array, to have the most recent message at the end
-    //   // necessary because we get a descendingly sorted array from the data service
-    //   .map(m => m.reverse());
-
-
-    // this.jobsFUTUR$ = dataService.jobs$()
-    //   .map(m => m.data)
-    //   .map(m => m.reverse());
-    this.jobsFUTUR$ = dataService.jobs$()
-    .map(jobs => {
-      jobs.filter(job => {
-        return new Date(job.dateCommande).getTime() >= this.today.getTime() &&
-          new Date(job.dateCommande).getTime() <= this.today.getTime();
-      });
-    })
-    .map(m => m.data);
   }
 
   ngOnInit() {
-    // this.jobsFUTUR = this.jobs$.filter((item: any) => {
-    //   return item.date.getTime() >= fromDate.getTime() &&
-    //     item.date.getTime() <= toDate.getTime();
-    // });
-    // this.jobsFUTUR = this.jobs$.filter(
-    //   book => book.store_id === this.store.id);
-    // this.jobsTODAY = this.jobs$.filter(
-    //   book => book.store_id === this.store.id);
-    // this.jobsDONE = this.jobs$.filter(
-    //   book => book.store_id === this.store.id);
+    let today = moment().format('YYYY MM DD');
+    let yesterday = moment().subtract(1, 'day').format('YYYY MM DD');
+    let afterday = moment().add(1, 'day').format('YYYY MM DD');
+    console.log(today);
+    console.log(yesterday);
+    console.log(afterday);
+
+      console.log(moment(new Date('2018-03-23 08:52:13.598'), 'YYYY MM DD').isSame(today, 'day'))
+    // this.jobsFUTUR$ = this.dataService.jobs$()
+    // .filter(m => moment(m.data.dateDelivery, 'YYYY MM DD').isAfter(today, 'day'))
+    // .map(m => m.data);
+
+    this.jobsTODAY$ = this.dataService.jobs$()
+    // .filter(m => moment(new Date(m.data.dateDelivery), 'YYYY MM DD').isSame(today, 'day'))
+    .map(m => m.data);
+
+    // this.jobsDONE$ = this.dataService.jobs$()
+    // .filter(m => moment(moment(m.data.dateDelivery).format('YYYY MM DD')).isBefore(today, 'day'))
+    // .map(m => m.data);
   }
 
 }
